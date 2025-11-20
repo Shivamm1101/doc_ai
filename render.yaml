@@ -46,12 +46,7 @@ services:
 
       # Shared disk path
       - key: STORAGE_ROOT
-        value: /mnt/storage
-
-    disk:
-      name: shared-storage
-      mountPath: /mnt/storage
-      sizeGB: 1
+        value: /tmp
 
 
   # ============================================
@@ -97,12 +92,8 @@ services:
 
       # Shared disk path
       - key: STORAGE_ROOT
-        value: /mnt/storage
+        value: /tmp
 
-    disk:
-      name: shared-storage    # must match Django’s disk name!
-      mountPath: /mnt/storage
-      sizeGB: 1
 
 
 # ============================================
