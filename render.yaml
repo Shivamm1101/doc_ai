@@ -1,0 +1,113 @@
+services:
+  # ============================================
+  # DJANGO WEB API SERVICE
+  # ============================================
+  - type: web
+    name: django-api
+    runtime: python
+    plan: free
+
+    buildCommand: |
+      pip install --upgrade pip
+      pip install -r requirements.txt
+      python manage.py collectstatic --noinput
+
+    startCommand: gunicorn backend.wsgi:application --bind 0.0.0.0:$PORT
+
+    envVars:
+      - key: DJANGO_SECRET_KEY
+        generateValue: true
+
+      # Postgres
+      - key: POSTGRES_HOST
+        fromDatabase:
+          name: pdf-dataset-db
+          property: host
+      - key: POSTGRES_PORT
+        fromDatabase:
+          name: pdf-dataset-db
+          property: port
+      - key: POSTGRES_DB
+        fromDatabase:
+          name: pdf-dataset-db
+          property: database
+      - key: POSTGRES_USER
+        fromDatabase:
+          name: pdf-dataset-db
+          property: user
+      - key: POSTGRES_PASSWORD
+        fromDatabase:
+          name: pdf-dataset-db
+          property: password
+
+      # LLM keys
+      - key: OPENAI_API_KEY
+        sync: false
+
+      # Shared disk path
+      - key: STORAGE_ROOT
+        value: /mnt/storage
+
+    disk:
+      name: shared-storage
+      mountPath: /mnt/storage
+      sizeGB: 1
+
+
+  # ============================================
+  # PREFECT WORKER
+  # ============================================
+  - type: worker
+    name: prefect-worker
+    runtime: python
+    plan: free
+
+    buildCommand: |
+      pip install --upgrade pip
+      pip install -r requirements.txt
+
+    startCommand: prefect worker start -q default
+
+    envVars:
+      # DB access
+      - key: POSTGRES_HOST
+        fromDatabase:
+          name: pdf-dataset-db
+          property: host
+      - key: POSTGRES_PORT
+        fromDatabase:
+          name: pdf-dataset-db
+          property: port
+      - key: POSTGRES_DB
+        fromDatabase:
+          name: pdf-dataset-db
+          property: database
+      - key: POSTGRES_USER
+        fromDatabase:
+          name: pdf-dataset-db
+          property: user
+      - key: POSTGRES_PASSWORD
+        fromDatabase:
+          name: pdf-dataset-db
+          property: password
+
+      # LLM keys
+      - key: OPENAI_API_KEY
+        sync: false
+
+      # Shared disk path
+      - key: STORAGE_ROOT
+        value: /mnt/storage
+
+    disk:
+      name: shared-storage    # must match Django’s disk name!
+      mountPath: /mnt/storage
+      sizeGB: 1
+
+
+# ============================================
+# POSTGRES
+# ============================================
+databases:
+  - name: pdf-dataset-db
+    plan: free

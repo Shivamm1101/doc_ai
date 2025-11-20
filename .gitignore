@@ -1,10 +1,29 @@
-venv/
+# Python
+.dlt
 __pycache__/
 *.pyc
-*.sqlite3
+*.pyo
+*.pyd
+*.DS_Store
 .env
-# Airflow
-airflow/airflow.db
-airflow/airflow-webserver.pid
-logs/
-EOL
+.env.*
+*.sqlite3
+
+# Django stuff
+staticfiles/
+media/
+documents/
+vectorstore/
+chroma/
+celerybeat-schedule
+*.log
+# Virtual environment
+.venv/
+venv/
+
+# Prefect
+.prefect/
+
+# IDE
+.vscode/
+.idea/
