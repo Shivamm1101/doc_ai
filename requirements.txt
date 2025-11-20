@@ -1,58 +1,33 @@
-# ======================
-# Django + REST
-# ======================
-Django==5.0.2
-djangorestframework==3.14.0
-django-environ==0.11.2
+# Web framework
+Django
+djangorestframework
+django-environ
 
-# ======================
 # PDF + OCR
-# ======================
-pymupdf==1.23.8
-pytesseract==0.3.10
-Pillow==10.2.0
-pdfplumber==0.10.3
+pytesseract
+Pillow
+pdfplumber
+pdf2image
 
-# ======================
-# Vector DB — Chroma
-# (Render uses disk persistence)
-# ======================
-chromadb==0.4.24
+# Vector DB
+chromadb
 
-# ======================
-# ETL (DLT)
-# ======================
-dlt==0.4.10
+# ETL
+dlt
 
-# ======================
-# Prefect Orchestration
-# ======================
-prefect==3.0.0
-
-# ======================
 # Logging
-# ======================
-loguru==0.7.2
+loguru
 
-# ======================
-# Database drivers
-# Use ONLY psycopg2-binary for Django + Postgres on Render
-# ======================
-psycopg2-binary==2.9.9
+# PostgreSQL driver
+psycopg2-binary
 
-# ======================
-# Environment Variables
-# ======================
-python-dotenv==1.0.1
+# Orchestration
+prefect
 
-# ======================
-# Deployment (Render)
-# ======================
-gunicorn==21.2.0
+# Utils
+python-dotenv
 
-# ======================
 # Testing
-# ======================
-pytest==9.0.1
-pytest-django==4.11.1
-pytest-cov==7.0.0
+pytest
+pytest-django
+pytest-cov
