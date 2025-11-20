@@ -15,6 +15,7 @@ pdf2image
 
 # Vector DB
 chromadb
+overrides==7.4.0
 
 # ETL
 dlt
