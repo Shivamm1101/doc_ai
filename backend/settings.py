@@ -32,11 +32,7 @@ SECRET_KEY = env("DJANGO_SECRET_KEY", default="unsafe-local-secret")
 
 DEBUG = env("DEBUG", default=False)
 
-ALLOWED_HOSTS = [
-    "localhost",
-    "127.0.0.1",
-    env("RENDER_EXTERNAL_HOSTNAME", default="")
-]
+ALLOWED_HOSTS = ["*"]
 
 # ======================================================
 # INSTALLED APPS
