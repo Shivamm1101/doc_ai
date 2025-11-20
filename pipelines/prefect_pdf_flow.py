@@ -89,8 +89,3 @@ def pdf_ingestion_flow(pdf_path: str):
     return {"document_id": document_id}
 
 
-# ---------------------------------------------------
-# TEST HARNESS
-# ---------------------------------------------------
-if __name__ == "__main__":
-    pdf_ingestion_flow("documents/URA-Circular on GFA area definition.pdf")

@@ -118,19 +118,3 @@ def store_chunks_in_chroma(
         "collection": collection_name,
     }
 
-
-# ============================================================
-#    TEST HARNESS (with a fake chunk)
-# ============================================================
-
-if __name__ == "__main__":
-    test_chunks = [
-        {
-            "id": "123",
-            "text": "This is an example chunk about construction approval.",
-            "metadata": {"pdf_type": "construction_approval", "page_number": 1},
-        }
-    ]
-
-    result = store_chunks_in_chroma(test_chunks, collection_name="test_pdf_chunks")
-    print(result)

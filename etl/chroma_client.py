@@ -44,7 +44,7 @@ def get_collection(name="pdf_chunks", recreate=False):
 
 
 # ------------------------------------------------------
-# ADD PLAIN DOCUMENT (if needed)
+# ADD DOCUMENT
 # ------------------------------------------------------
 def add_document(collection_name: str, doc_id: str, text: str, metadata=None):
     """

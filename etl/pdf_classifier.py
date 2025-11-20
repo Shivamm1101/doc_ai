@@ -127,13 +127,3 @@ def detect_pdf_type(pdf_path: str) -> dict:
     return parsed
 
 
-# ============================================================
-# TEST HARNESS
-# ============================================================
-
-if __name__ == "__main__":
-    test_pdf = "documents/Construction planning and costing.pdf"
-    result = detect_pdf_type(test_pdf)
-
-    print("\n===== CLEAN STRUCTURED OUTPUT =====\n")
-    print(result)

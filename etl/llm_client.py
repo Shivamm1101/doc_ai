@@ -6,17 +6,13 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-# ---------------------------------------------------------
-# MODEL (best for cost-based PDF extraction)
-# ---------------------------------------------------------
+
 PRIMARY_MODEL = "gpt-4.1"  
 
-# ---------------------------------------------------------
-# API KEY
-# ---------------------------------------------------------
+
 API_KEY = os.getenv("OPENAI_API_KEY")
 if not API_KEY:
-    raise ValueError("❌ OPENAI_API_KEY is not set!")
+    raise ValueError("OPENAI_API_KEY is not set!")
 
 # Initialize client
 client = OpenAI(api_key=API_KEY)
@@ -66,6 +62,4 @@ def ask_llm(prompt: str, max_retries: int = 6):
 
             logger.error(f"[LLM] Unexpected error: {e}")
             raise
-
-    # All attempts failed
-    raise RuntimeError(f"❌ OpenAI model {PRIMARY_MODEL} failed after all retries.")
+    raise RuntimeError(f" OpenAI model {PRIMARY_MODEL} failed after all retries.")
