@@ -1,7 +1,11 @@
-# Web framework
+# Django & API
 Django
 djangorestframework
 django-environ
+
+# LLM / Embeddings
+openai
+langchain-openai
 
 # PDF + OCR
 pytesseract
@@ -32,5 +36,5 @@ pytest
 pytest-django
 pytest-cov
 
+# Deployment (Render)
 gunicorn
-
